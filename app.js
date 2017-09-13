@@ -5,11 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+require('dotenv').config({ path: 'variables.env' });
+
 var mongoose = require('mongoose');
 
 // Set up default mongoose connection
-var mongoDB = 'mongodb://lib:lib123@ds127564.mlab.com:27564/testing-email-server'
-mongoose.connect(mongoDB);
+mongoose.connect(process.env.DATABASE);
 
 // default connection
 var db = mongoose.connection;
